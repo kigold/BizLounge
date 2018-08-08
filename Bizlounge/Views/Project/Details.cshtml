@@ -1,0 +1,75 @@
+﻿
+@model Bizlounge.Models.ProjectViewModel
+
+@{
+    ViewData["Title"] = "Project";
+}
+
+@if (Model != null)
+{
+    <!-- Project Details-->
+    var item = Model.Project;
+    var slots = item.Slots;
+    var payments = item.Payments;
+
+    <div class="ui items">
+        <div class="item">
+            <div class="content">
+                <h1>@Html.DisplayFor(modelItem => item.Name)</h1>
+                <div class="description">
+                    <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                </div>
+                <div class="meta">
+                    <strong> @Html.DisplayNameFor(model => model.Project.Budget)</strong> @Html.DisplayFor(modelItem => item.Budget)
+                </div>
+                <div class="meta">
+                    <strong> @Html.DisplayNameFor(model => model.Project.PaybackAmount)</strong> @Html.DisplayFor(modelItem => item.PaybackAmount)
+                </div>
+                <div class="meta">
+                    <strong> @Html.DisplayNameFor(model => model.Project.Duration)</strong> @Html.DisplayFor(modelItem => item.Duration)
+                </div>
+                <div class="meta">
+                    <strong> @Html.DisplayNameFor(model => model.Project.PaybackInterval)</strong> @Html.DisplayFor(modelItem => item.PaybackInterval)
+                </div>
+                <div class="meta">
+                    <strong> @Html.DisplayNameFor(model => model.Project.SlotCount)</strong> @Html.DisplayFor(modelItem => item.SlotCount)
+                </div>
+            </div>
+
+            <div class="ui statistic">
+                <div class="value">
+                    @Html.DisplayFor(modelItem => item.TotalPayout)
+                </div>
+                <div class="label">
+                    Total Payout
+                </div>
+                <div class="value">
+                    @Html.DisplayFor(modelItem => item.PaybackCycleCount)
+                </div>
+                <div class="label">
+                    Current Cycle
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Project Slots-->
+    <h3 class="ui center aligned header">Project Slots</h3>
+    <div class="ui stackable celled grid container">
+        <div class="three column row">
+            @foreach (var slot in slots)
+            {
+                <div class="column">
+                    <div class="ui segment">
+                        <div class="item">
+                            <div class="content">
+                                <i class="user icon"></i>
+                                <a class="header">@Html.DisplayFor(modelItem => slot.User.FullName)</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             }
+        </div>
+    </div>
+    <!-- end Project Slots-->
+}

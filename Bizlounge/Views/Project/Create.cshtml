@@ -1,0 +1,174 @@
+﻿@model Bizlounge.Models.Project
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Project</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Budget" class="control-label"></label>
+                <input asp-for="Budget" class="form-control" />
+                <span asp-validation-for="Budget" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPayout" class="control-label"></label>
+                <input asp-for="TotalPayout" class="form-control" />
+                <span asp-validation-for="TotalPayout" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label"></label>
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaybackInterval" class="control-label"></label>
+                <select asp-for="PaybackInterval" class="form-control"></select>
+                <span asp-validation-for="PaybackInterval" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaybackAmount" class="control-label"></label>
+                <input asp-for="PaybackAmount" class="form-control" />
+                <span asp-validation-for="PaybackAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaybackCycleCount" class="control-label"></label>
+                <input asp-for="PaybackCycleCount" class="form-control" />
+                <span asp-validation-for="PaybackCycleCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control"></select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bonus" class="control-label"></label>
+                <input asp-for="Bonus" class="form-control" />
+                <span asp-validation-for="Bonus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectOwnerId" class="control-label"></label>
+                <select asp-for="ProjectOwnerId" class ="form-control" asp-items="ViewBag.ProjectOwnerId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="SlotCount" class="control-label"></label>
+                <input asp-for="SlotCount" class="form-control" />
+                <span asp-validation-for="SlotCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<form asp-controller="Project" asp-action="Create" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="ui large form validate-me" role="form">
+    <h4 class="ui dividing header">Create New Project</h4>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+    <div class="field">
+        <label>@Html.DisplayNameFor(model => model.ProjectOwnerId)</label>
+        <div class="ui left icon input">
+            <i class="tag icon"></i>
+            <input asp-for="ProjectOwnerId" placeholder="@Html.DisplayNameFor(model => model.ProjectOwnerId)" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="field">
+        <label>@Html.DisplayNameFor(model => model.Name)</label>
+        <div class="ui left icon input">
+            <i class="tag icon"></i>
+            <input asp-for="Name" placeholder="@Html.DisplayNameFor(model => model.Name)" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="field">
+        <label>@Html.DisplayNameFor(model => model.Description)</label>
+        <textarea asp-for="Description" rows="2" placeholder="Project Name">"@Html.DisplayNameFor(model => model.Description)" </textarea>
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <label>@Html.DisplayNameFor(model => model.Budget)</label>
+            <div class="ui left icon input">
+                <i class="money bill alternate outline icon"></"></i>
+                <input asp-for="Budget" placeholder="@Html.DisplayNameFor(model => model.Budget)" />
+            </div>
+        </div>
+        <div class="field">
+            <label>@Html.DisplayNameFor(model => model.TotalPayout)</label>
+            <div class="ui left icon input">
+                <i class="money bill alternate outline icon"></"></i>
+                <input asp-for="TotalPayout" placeholder="@Html.DisplayNameFor(model => model.TotalPayout)" />
+            </div>
+        </div>
+    </div>
+    <div class="three fields">
+        <div class="field">
+            <label>@Html.DisplayNameFor(model => model.Duration)</label>
+            <div class="ui left icon input">
+                <i class="clock outline icon"></i>
+                <input asp-for="Duration" placeholder="@Html.DisplayNameFor(model => model.Duration)" />
+            </div>
+        </div>
+        <div class="field">
+            <label>@Html.DisplayNameFor(model => model.PaybackInterval)</label>
+            <div class="ui left icon input">
+                <i class="plus circle icon"></i>
+                <select class="ui fluid dropdown" asp-for="PaybackInterval" asp-items="Html.GetEnumSelectList<Project.EnumPaybackInterval>()">
+                    <option value="">@Html.DisplayNameFor(model => model.PaybackInterval)</option>
+                </select>
+                <span asp-validation-for="PaybackInterval" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="field">
+            <label>@Html.DisplayNameFor(model => model.PaybackAmount)</label>
+            <div class="ui left icon input">
+                <i class="money bill alternate outline icon"></"></i>
+                <input asp-for="PaybackAmount" placeholder="@Html.DisplayNameFor(model => model.PaybackAmount)" />
+            </div>
+        </div>
+    </div>
+    <div class="two fields">
+        <div class="field">
+            <label>@Html.DisplayNameFor(model => model.Bonus)</label>
+            <div class="ui left icon input">
+                <i class="money bill alternate outline icon"></"></i>
+                <input asp-for="Bonus" placeholder="@Html.DisplayNameFor(model => model.Bonus)" />
+            </div>
+        </div>
+        <div class="field">
+            <label>@Html.DisplayNameFor(model => model.SlotCount)</label>
+            <div class="ui left icon input">
+                <i class="plus circle icon"></"></i>
+                <input asp-for="SlotCount" placeholder="@Html.DisplayNameFor(model => model.SlotCount)" />
+            </div>
+        </div>
+    </div>
+    <input class="ui button" type="submit" value="Create Project" />
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

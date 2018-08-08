@@ -1,0 +1,90 @@
+﻿@model Bizlounge.Models.ProjectViewModel
+
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Project</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Budget" class="control-label"></label>
+                <input asp-for="Budget" class="form-control" />
+                <span asp-validation-for="Budget" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPayout" class="control-label"></label>
+                <input asp-for="TotalPayout" class="form-control" />
+                <span asp-validation-for="TotalPayout" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label"></label>
+                <input asp-for="Duration" class="form-control" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaybackInterval" class="control-label"></label>
+                <select asp-for="PaybackInterval" class="form-control"></select>
+                <span asp-validation-for="PaybackInterval" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaybackAmount" class="control-label"></label>
+                <input asp-for="PaybackAmount" class="form-control" />
+                <span asp-validation-for="PaybackAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaybackCycleCount" class="control-label"></label>
+                <input asp-for="PaybackCycleCount" class="form-control" />
+                <span asp-validation-for="PaybackCycleCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <select asp-for="Status" class="form-control"></select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Bonus" class="control-label"></label>
+                <input asp-for="Bonus" class="form-control" />
+                <span asp-validation-for="Bonus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProjectOwnerId" class="control-label"></label>
+                <select asp-for="ProjectOwnerId" class="form-control" asp-items="ViewBag.ProjectOwnerId"></select>
+                <span asp-validation-for="ProjectOwnerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SlotCount" class="control-label"></label>
+                <input asp-for="SlotCount" class="form-control" />
+                <span asp-validation-for="SlotCount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
